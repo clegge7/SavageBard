@@ -1,0 +1,62 @@
+[
+    {
+        "NPC": "Lily",
+        "Description": "Marco's favorite Halfling Whore, likes Ianira's stew"
+    },
+    {
+        "NPC": "Geoto the Tower",
+        "Description": "Dude in charge of labor union, wants a day off per week"
+    },
+    {
+        "NPC": "Armund Harkleson",
+        "Description": "Yeti Hunter and Trapper, Hide merchant"
+    },
+	{
+		"NPC": "Ianira",
+        "Description": "Alias: Ianira Zaino - Falcotosian half-orc that we assisted in finding her lost donkey. Makes great stew."
+	},
+	{
+		"NPC": "Orn",
+        "Description": "A Svedtalin Viking Warchief that was (allegedly) killed by Marco during a failed burglary attempt. Orn's crew elected a new leader, Fatzi, after his passing."
+	},
+	{
+		"NPC": "Fatzi",
+        "Description": "Newly elected Svedtalin Viking Warchief. He succeeds the late Orn, whom was (allegedly) slain by Marco."
+	},
+	{
+		"NPC": "Seneschal Del Mare",
+        "Description": "The Harbor Master of Drekyssa. She has enlisted the help of LABIA and owes the party a Major Favor"
+	},
+	{
+		"NPC": "SDM",
+        "Description": "Seneschal Del Mare - The Harbor Master of Drekyssa. She has enlisted the help of LABIA and owes the party a Major Favor"
+	},
+	{
+		"NPC": "Diarf",
+        "Description": "The (Henry's words) dickhead guard that arrested Henry after being caught with Marco"
+	},
+	{
+		"NPC": "Daggetryd Windhide",
+        "Description": "Dwarven Guard Captain at the outpost outside Drekyssa. She assisted LABIA when they were caught in the wilderness fleeing from draugr"
+	},
+	{
+		"NPC": "Sabhet",
+        "Description": "Priestess of the Twin Goddesses"
+	},
+	{
+		"NPC": "Erea",
+        "Description": "Mayor of Svedtala"
+	},
+	{
+		"NPC": "Gregory",
+        "Description": "Guard in front of the Brothel of Drekyssa"
+	},
+	{
+		"NPC": "Pixie",
+        "Description": "Receptionist of the Brothel of Drekyssa"
+	},
+	{
+		"NPC": "Lord Tethie",
+        "Description": "Dragon brothel guest from the Delta"
+	}
+]

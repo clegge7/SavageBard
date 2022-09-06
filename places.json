@@ -1,0 +1,76 @@
+[
+    {
+        "Place": "Avaron",
+        "Description": "Feudal Europe",
+		"Realm": true,
+		"ParentRealm": null,
+		"Children": null
+    },
+    {
+        "Place": "Falcotoso",
+        "Description": "Renaissance Italy",
+		"Realm": true,
+		"ParentRealm": null,
+		"Children": null
+    },
+    {
+        "Place": "Svedtala",
+        "Description": "Viking-Esque, Nordic",
+		"Realm": true,
+		"ParentRealm": null,
+		"Children": [
+			{
+				"Place": "Kingdom of Svedtala",
+				"Description": "Centrally located on the continent of Svedtala on an inlet leading to the Sokkva Sea",
+				"ParentRealm": "Svedtala",
+				"Children": null
+			},
+			{
+				"Place": "Kingdom of Fyrir",
+				"Description": "Located on the Eastern side of the continent of Svedtala, not much is know yet",
+				"ParentRealm": "Svedtala",
+				"Children": null
+			},
+			{
+				"Place": "Kingdom of Eyrr",
+				"Description": "Located on the Southwestern side of the continent of Svedtala, not much is know yet",
+				"ParentRealm": "Svedtala",
+				"Children": null
+			},
+			{
+				"Place": "Drekyssa",
+				"Description": "Independent Port city on the Svlar Peninsula, Home to Merchants and Brothels aplenty",
+				"ParentRealm": "Svedtala",
+				"Children": null
+			}
+		]
+    },
+	{
+        "Place": "Deltan",
+        "Description": "Egypt/Sumerian-Esque",
+		"Realm": true,
+		"ParentRealm": null,
+		"Children": null
+    },
+	{
+        "Place": "Sahalan",
+        "Description": "Some Emirs, Arabian, Mali",
+		"Realm": true,
+		"ParentRealm": null,
+		"Children": null
+    },
+	{
+        "Place": "Zephyral",
+        "Description": "Russian Boyars/Eastern European",
+		"Realm": true,
+		"ParentRealm": null,
+		"Children": null
+    },
+	{
+        "Place": "Stormrunners",
+        "Description": "Mongols/Huns",
+		"Realm": true,
+		"ParentRealm": null,
+		"Children": null
+    }
+]
