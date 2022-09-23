@@ -2,25 +2,21 @@
     {
         "Player": "Stonewall Johnson",
         "Character": "Marco di Grazia",
-		"Class": "",
-		"Age": ""
+		"Nickname": "Singlehandedly"
     },
     {
         "Player": "th3dean",
         "Character": "Henry Pendrasil",
-		"Class": "",
-		"Age": ""
+		"Nickname": "The Bear"
     },
     {
         "Player": "dont_care_dave",
         "Character": "Muireadhach Éibhear",
-		"Class": "",
-		"Age": ""
+		"Nickname": "Slayer of Shadows"
     },
 	{
         "Player": "SelfFatality",
         "Character": "Vorsun Terracrusher",
-		"Class": "",
-		"Age": ""
+		"Nickname": "The Fister"
     }
 ]

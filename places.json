@@ -41,7 +41,28 @@
 				"Place": "Drekyssa",
 				"Description": "Independent Port city on the Svlar Peninsula, Home to Merchants and Brothels aplenty",
 				"ParentRealm": "Svedtala",
-				"Children": null
+				"Children": [
+					{
+						"Place": "Heart's Rest",
+						"Description": "Tavern house where unrest was brewing before LABIA assisted Seneschal Del Mare in negotiating with the local labor union.",
+						"ParentRealm": "Drekyssa"
+					},
+					{
+						"Place": "Longshoreman's Brew",
+						"Description": "Tavern, leather items and Tavern in the harbor district. Decent place.",
+						"ParentRealm": "Drekyssa"
+					},
+					{
+						"Place": "Snatch of Hoes",
+						"Description": "A Brothel in Drekyssa home to Marco's favorite whore, Lily.",
+						"ParentRealm": "Drekyssa"
+					},
+					{
+						"Place": "Beaks & Bakes",
+						"Description": "Homing pidgeon and birthday cake specialty store",
+						"ParentRealm": "Drekyssa"
+					}
+				]
 			}
 		]
     },

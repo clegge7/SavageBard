@@ -13,7 +13,7 @@
     },
 	{
 		"NPC": "Ianira",
-        "Description": "Alias: Ianira Zaino - Falcotosian half-orc that we assisted in finding her lost donkey. Makes great stew."
+        "Description": "Alias: Ianira Zaino - Falcotosian half-orc that we assisted in finding her lost donkey. Makes great stew. She now works in Drekyssa serving her stew."
 	},
 	{
 		"NPC": "Orn",
@@ -52,11 +52,23 @@
         "Description": "Guard in front of the Brothel of Drekyssa"
 	},
 	{
+		"NPC": "Jameson",
+        "Description": "Guard in front of the Brothel of Drekyssa"
+	},
+	{
 		"NPC": "Pixie",
         "Description": "Receptionist of the Brothel of Drekyssa"
 	},
 	{
 		"NPC": "Lord Tethie",
         "Description": "Dragon brothel guest from the Delta"
+	},
+	{
+		"NPC": "Rikir-Snae",
+        "Description": "Alias: Dragon Mommy - Dragon owner of the Brothel of Drekyssa. She has white wings, white hair waist level. Fancy fancy clothes, plain copper ring she wears that contracts with the rest of her fancy clothes"
+	},
+	{
+		"NPC": "Religast",
+        "Description": "Alias: Religas the Wise - Old Druid, Been alive for a stupid long time."
 	}
 ]

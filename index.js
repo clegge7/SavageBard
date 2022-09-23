@@ -2,8 +2,13 @@ const secret_token = 'SECRET_TOKEN';
 const client_id = 'CLIENT_ID';
 const NPC_REGEX = new RegExp(/^(\W|^)-npc[a-zA-Z ]*?(\W|$)/);
 const PLACE_REGEX = new RegExp(/^(\W|^)-place[a-zA-Z ]*?(\W|$)/);
+const PLAY_REGEX = new RegExp(/^(\W|^)-play ((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube(-nocookie)?\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/);
 
+const ytdl = require('ytdl-core');
+const play = require('play-dl');
+const { video_basic_info, stream } = require('play-dl');
 const { REST, Routes } = require('discord.js');
+const { joinVoiceChannel, getVoiceConnection, createAudioPlayer, AudioPlayerStatus, createAudioResource, NoSubscriberBehavior } = require('@discordjs/voice');
 
 const commands = [];
 
@@ -19,13 +24,20 @@ const rest = new REST({ version: '10' }).setToken('token');
   }
 })();
 
-const { Client, GatewayIntentBits } = require('discord.js');
-const client = new Client({ intents: [
-	GatewayIntentBits.Guilds,
-	GatewayIntentBits.GuildMessages,
-	GatewayIntentBits.MessageContent,
-	GatewayIntentBits.GuildMembers
-]});
+const { Client, GatewayIntentBits, IntentsBitField, Intents } = require('discord.js');
+const myIntents = new IntentsBitField();
+myIntents.add(
+	IntentsBitField.Flags.Guilds,
+	IntentsBitField.Flags.GuildMessages,
+	IntentsBitField.Flags.MessageContent,
+	IntentsBitField.Flags.GuildMembers,
+	IntentsBitField.Flags.GuildVoiceStates
+);
+const client = new Client({ intents: myIntents});
+
+const player = createAudioPlayer();
+var connection = null;
+var resource = null;
 
 //Get JSON data
 function getCharacterData(){
@@ -37,10 +49,6 @@ function getCharacterData(){
 		const campaignData = JSON.parse(data);
 		
 		return campaignData;
-		// print all campaignData
-		campaignData.forEach(db => {
-			console.log(`${db.Player}: ${db.Character}`);
-		});
 	} catch (err) {
 		console.log(`Error reading file from disk: ${err}`);
 	}
@@ -127,7 +135,15 @@ function findPlace(place, message){
 				if(place.toLowerCase() === (`${child.Place}`.toLowerCase())){
 					placeReply(place, message, child);
 					match = true;
-				}	
+				}
+				if(child.Children != null){
+					child.Children.forEach(grandChild => {
+						if(place.toLowerCase() === (`${grandChild.Place}`.toLowerCase())){
+							placeReply(place, message, grandChild);
+							match = true;
+						}
+					});
+				}
 			});
 		}
 	});
@@ -168,6 +184,23 @@ function getArgs(message){
 	return outarg.trim();
 }
 
+async function playAudio(url){
+	const streamOptions = { seek: 0, volume: 1 };
+	
+	// old ytdl crashes after 20 minutes
+	//const stream = await ytdl(url, {filter: 'audioonly'});
+			
+	//resource = createAudioResource(stream);
+	
+	const stream = await play.stream(url, {quality: 0});
+			
+	resource = createAudioResource(stream.stream,{
+		inputType: stream.type
+	});
+	connection.subscribe(player);
+	player.play(resource, streamOptions);
+}
+
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
@@ -181,7 +214,7 @@ client.on('interactionCreate', async interaction => {
   }
 });
 
-client.on('messageCreate', message =>{
+client.on('messageCreate', async (message) =>{
 	if (message.content === '-roll20'){
 		message.reply('https://app.roll20.net/campaigns/details/13512129/drekyssa');
 	}
@@ -189,7 +222,7 @@ client.on('messageCreate', message =>{
 		var campaignData = getCharacterData();
 		var reply = '';
 		campaignData.forEach(db => {
-			reply += (`Player: ${db.Player}\nCharacter: ${db.Character}\n\n`);
+			reply += (`Player: ${db.Player}\nCharacter: ${db.Character}\nTavern Nickname: ${db.Nickname}\n\n`);
 		});
 		message.reply(reply);
 	}
@@ -213,6 +246,26 @@ client.on('messageCreate', message =>{
 			var place = getArgs(message);
 			var placeData = findPlace(place, message);
 		}
+	}
+	if(message.content === '-join'){
+		var channel = message.member.voice;
+		
+		connection = joinVoiceChannel({
+			channelId: channel.channelId,
+			guildId: channel.guild.id,
+			adapterCreator: message.guild.voiceAdapterCreator,
+			selfDeaf: false
+		})
+	}
+	if(message.content.match(PLAY_REGEX)){
+		if(connection != null && connection._state.status != 'disconnected'){
+			var url = getArgs(message);
+			
+			playAudio(url);
+		}
+	}
+	if(message.content === '-stop'){
+		player.stop();
 	}
 });
 
